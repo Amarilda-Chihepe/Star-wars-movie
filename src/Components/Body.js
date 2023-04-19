@@ -1,5 +1,6 @@
 import '../Assets/CSS/Style.css';
 import { useState, useEffect } from "react";
+import Loading from "../Assets/img/loading.png";
 
 function Body(){
 
@@ -42,7 +43,8 @@ function Body(){
 
     return(
         <div className="row row-content">
-            {loading && <div>Loading....</div>}
+            {loading && <div className='loaderr'><img src={Loading} alt='loader' className='loader'/></div>}
+
             {error && (
                 <div>{'There is a problem fetching the post data - ${error}'}</div>
             )}
@@ -62,14 +64,6 @@ function Body(){
                 )
                 })}
 
-                {/*</div className="col-12 col-md-5 col-xl-3 film-card me-5 mb-3">
-                    <h4>A new Hope</h4>
-                    <p>data</p>
-
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus eius quam veritatis sunt? Vitae rem tempora distinctio quasi assumenda quis iure sunt facere magni? Fugiat maxime ipsa accusantium quos recusandae.</p>
-
-                    <a href="">More info</a>
-            </div>*/}
         </div> 
     )
 
