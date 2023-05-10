@@ -1,6 +1,8 @@
 import '../Assets/CSS/Style.css';
 import { useState, useEffect } from "react";
 import Loading from "../Assets/img/loading.png";
+import { Link } from 'react-router-dom';
+
 
 function Body(){
 
@@ -16,16 +18,15 @@ function Body(){
             if(!response.ok){
                 throw new error ( 'This is an HTTP error: The status is : $(response.status)');
             }
-         console.log('vbvjh'+response.status);
+
             return response.json();
            
-       })
-        
+       })        
         .then((data) => {
             
             setData(data);
             setError(null);
-           // console.log(data);
+           //console.log(data);
            // console.log(dataa);
         })
 
@@ -46,7 +47,7 @@ function Body(){
             {loading && <div className='loaderr'><img src={Loading} alt='loader' className='loader'/></div>}
 
             {error && (
-                <div>{'There is a problem fetching the post data - ${error}'}</div>
+                <div style={{backgroundColor: 'white', color: 'red'}}>{'There is a problem fetching the post data....'}</div>
             )}
 
             {data && data['results'].map((movie) => {
@@ -58,7 +59,10 @@ function Body(){
                         <p className='opening-craw'>{movie.opening_crawl}</p>
 
                         <div className='more-info'>
-                            <a href="">More info</a>
+                            <nav>
+                                <Link to={'/readMore/{movie.episode_id}'}>More info</Link>
+                            </nav>
+                          
                         </div>       
                     </div>
                 )

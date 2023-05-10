@@ -7,8 +7,8 @@ function Header(){
 
     return(
         <div className='col-auto header d-flex'>
-            <img src={Star} alt="Star wars" className="logo"/>
-            <img src={Wars} alt="star wars" className="logo"/>
+            <img src={Star} alt="Star" className="logo"/>
+            <img src={Wars} alt="wars" className="logo"/>
         </div>
     )
 }
