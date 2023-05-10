@@ -26,8 +26,6 @@ function Body(){
             
             setData(data);
             setError(null);
-           //console.log(data);
-           // console.log(dataa);
         })
 
         .catch((error) => {
@@ -58,9 +56,9 @@ function Body(){
 
                         <p className='opening-craw'>{movie.opening_crawl}</p>
 
-                        <div className='more-info'>
+                        <div className='more-info mb-3'>
                             <nav>
-                                <Link to={'/readMore/{movie.episode_id}'}>More info</Link>
+                                <Link to={`/readMore/${movie.episode_id}`}>More info</Link>
                             </nav>
                           
                         </div>       

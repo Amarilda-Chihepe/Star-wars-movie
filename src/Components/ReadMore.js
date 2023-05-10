@@ -1,6 +1,7 @@
 import '../Assets/CSS/MoreInfo.css';
 import '../Assets/CSS/Style.css';
-import useFetch from './useFetch';
+//import {useFetch} from './useFetch';
+import Vehicles from './Vehicles';
 import Loading from "../Assets/img/loading.png";
 import { BiArrowBack } from "react-icons/bi";
 import { Link, useParams } from 'react-router-dom';
@@ -46,77 +47,77 @@ function ReadMore(){
         <div className="div-more-info">
             {loading && <div className='loaderr'><img src={Loading} alt='loader' className='loader'/></div>}
             
-            <div className="ps-5 py-4 color-grey">
-                <Link to='/'><BiArrowBack/> Back to List</Link>
-            </div>
-            {filme && filme['results'].filter((film) => film.episode_id == 4).map((filterFilme) => {
+            {filme && filme['results'].filter((film) => film.episode_id == Number(id)).map((filterFilme) => {
                 return(
+
                 <div>
+                    <div className="ps-5 py-4 color-grey">
+                        <Link to='/'><BiArrowBack/> Back to List</Link>
+                    </div>
                     <div className='ps-5 d-flex flex-column align-items-center'>
-                    <h1 style={{fontSize: 50 }}>{filterFilme.title}</h1>
-                        <p style={{fontSize: 18 }}>Director: {filterFilme.director}</p>
-                    <p style={{fontSize: 18 }}>Producer: {filterFilme.producer}</p>
+                        <h1 style={{fontSize: 50 }}>{filterFilme.title}</h1>
+                            <p style={{fontSize: 18 }}>Director: {filterFilme.director}</p>
+                        <p style={{fontSize: 18 }}>Producer: {filterFilme.producer}</p>
                
-            </div>
+                    </div>
 
-            <div className='mx-5 mt-4 div'>
-                <h5 className='back-arrow'>Description</h5>
-                <p className=''>{filterFilme.opening_crawl}</p>
-            </div>
+                    <div className='mx-5 mt-4 div'>
+                        <h5 className='back-arrow'>Description</h5>
+                        <p className=''>{filterFilme.opening_crawl}</p>
+                    </div>
 
-            <div className='mx-5 div mt-5'>
-                <h5 className='back-arrow'>Characters</h5>
-                <ul className='list-group'>
-                    {filterFilme.characters.map((char) => { 
-                         
-                        //const data =  useFetch(char);  
-                        //console.log(data);
-                        return <li>{useFetch(char)['name']}</li>               
-                        { /*useFetch(char)['name']*/ }
-                    })}
-                </ul>
-                
-            </div>
+                    <div className='mx-5 div mt-5'>
+                        <h5 className='back-arrow'>Characters</h5>
+                    
+                            {filterFilme.characters.map((char) => { 
+                                return <Vehicles url = {char} />   
 
-            <div className='mx-5 div mt-5'>
-                <h5 className='back-arrow'>Vehicles</h5>
-                <ul>
-                {filterFilme.vehicles.map((char) => {     
-                        return <li>{char}</li>               
-                        { /*UseFetch(char)['name']*/ }
-                    })}
-                </ul>
-            </div>
+                                     
+                                { /*useFetch(char)['name']*/ }
+                            })}
+                        
+                        
+                    </div>
 
-            <div className='mx-5 div mt-5'>
-                <h5 className='back-arrow'>Planets</h5>
-                <ul>
-                {filterFilme.planets.map((char) => {     
-                        return <li>{char}</li>               
-                        { /*UseFetch(char)['name']*/ }
-                    })}
-                </ul>
-            </div>
+                    <div className='mx-5 div mt-5'>
+                        <h5 className='back-arrow'>Vehicles</h5>
+                        
+                        {filterFilme.vehicles.map((vehicles) => {     
+                                return <Vehicles url = {vehicles}/>               
+                                { /*UseFetch(char)['name']*/ }
+                            })}
+                        
+                    </div>
 
-            <div className='mx-5 div mt-5'>
-                <h5 className='back-arrow'>Starships</h5>
-                <ul>
-                {filterFilme.starships.map((char) => {     
-                        return <li>{char}</li>               
-                        { /*UseFetch(char)['name']*/ }
-                    })}
-                </ul>
-            </div>
+                    <div className='mx-5 div mt-5'>
+                        <h5 className='back-arrow'>Planets</h5>
+                        
+                        {filterFilme.planets.map((planets) => {     
+                                return <Vehicles url = {planets}/>              
+                                { /*UseFetch(char)['name']*/ }
+                            })}
+                        
+                    </div>
 
-            <div className='mx-5 div mt-5'>
-                <h5 className='back-arrow'>Species</h5>
-                <ul>
-                    {filterFilme.species.map((char) => {     
-                        return <li>{char}</li>               
-                        { /*UseFetch(char)['name']*/ }
-                    })}
-                </ul>
-            </div>
+                    <div className='mx-5 div mt-5'>
+                        <h5 className='back-arrow'>Starships</h5>
+                        
+                        {filterFilme.starships.map((starships) => {     
+                                return <Vehicles url = {starships}/>                
+                                { /*UseFetch(char)['name']*/ }
+                            })}
+                        
+                    </div>
+
+                    <div className='mx-5 div mt-5'>
+                        <h5 className='back-arrow'>Species</h5>
+                        
+                            {filterFilme.species.map((species) => {     
+                                return <Vehicles url = {species}/>               
+                                { /*UseFetch(char)['name']*/ }
+                            })}
+                        
+                    </div>
                 </div>)
             })}
             
